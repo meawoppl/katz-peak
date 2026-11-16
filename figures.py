@@ -24,7 +24,7 @@ def ballmer(b):
 TAU_M = 0.10
 TAU_J = (tau ** -p - TAU_M ** -p) ** (-1 / p)
 B_C, W_C = 0.30, 0.012
-LAM_J, LAM_M, LAM_K = 0.35, 0.80, 1.45
+LAM_J, LAM_M, LAM_K, LAM_0 = 0.35, 0.80, 1.45, 0.55
 
 def consciousness(b):
     return 1 / (1 + np.exp((b - B_C) / W_C))
@@ -34,7 +34,7 @@ def katz(b):
     J2, M2 = J + LAM_J * (1 - J), M + LAM_M * (1 - M)
     s = np.sqrt(1 + LAM_K)
     peak = lorentz(b, H * (1 + LAM_J) * s, b0 * s, gam * s)
-    return (A * J2 * M2 + peak + eps) * consciousness(b)
+    return (A * (1 + LAM_0) * J2 * M2 + peak + eps) * consciousness(b)
 
 b = np.linspace(0, 0.36, 8000)
 
@@ -112,6 +112,9 @@ ax.annotate("Loss of $\\mathcal{C}$\n(LLM cannot help)", xy=(0.30, katz(0.30)), 
 ax.annotate("", xy=(bk - 0.012, 1.6), xytext=(b0 + 0.006, 1.6),
             arrowprops=dict(arrowstyle="->", lw=0.8, color="#2166ac"))
 ax.text((b0 + bk) / 2 - 0.003, 1.7, r"$\Delta b$", ha="center", fontsize=8, color="#2166ac")
+ax.annotate("", xy=(0.004, katz(0.0)), xytext=(0.004, ballmer(0.0)),
+            arrowprops=dict(arrowstyle="<->", lw=0.6, color="#2166ac", shrinkA=0, shrinkB=0))
+ax.text(0.008, 1.22, r"$1+\lambda_0$", fontsize=7, color="#2166ac", va="center")
 ax.axvline(0.08, c="0.75", lw=0.6, ls=":")
 ax.text(0.082, 4.3, "U.S. legal driving limit\n(not a coding limit)", fontsize=6, color="0.45", va="top")
 ax.set_xlabel("Blood alcohol concentration $b$ (%)")
@@ -140,4 +143,4 @@ print(f"katz approach min {katz(b[pre]).min():.4f} at {b[pre][np.argmin(katz(b[p
 drinks = kpk / 100 * 0.68 * 80000 / 14 + 8 * BETA / 100 * 0.68 * 80000 / 14
 print(f"drinks/day {drinks:.3f} cost {drinks*1.5:.2f} incr {(katz(kpk)-1)*800:.2f} ratio {(katz(kpk)-1)*800/(drinks*1.5):.1f}")
 print(f"S(0) fitted {ballmer(0.0):.4f}; C at last datum {consciousness(bac.max()):.3f}; bac range {bac.min():.6f}-{bac.max():.6f}")
-print(f"S at 0.08 ballmer {ballmer(0.08):.3f}")
+print(f"S at 0.08 ballmer {ballmer(0.08):.3f}; katz sober {katz(0.0):.3f}; ballmer sober {ballmer(0.0):.3f}")

@@ -30,7 +30,7 @@
 
 \begin{abstract}
 \noindent
-The Ballmer Peak, an industry-accepted narrow enhancement of programming skill at a blood alcohol concentration (BAC) of approximately $0.13\pct$, has hitherto lacked a quantitative description beyond the canonical empirical record of Munroe~\citep{munroe2008}. We digitise that record ($N = 394$) and show that it is described to high fidelity ($R^2 = 0.982$) by a compressed-exponential impairment envelope superposed with a Lorentzian resonance centred at $b_0 = 0.1350 \pm 0.0007\pct$ with half-width $\gamma = 0.0030\pct$. We propose a two-component mechanism of action in which ethanol-induced \emph{disinhibition} drives a lightly damped harmonic oscillator (the ``inner critic'') into resonance, while a counterpoised \emph{impairment} term, factorable into judgement, motor fidelity and consciousness, suppresses baseline capability. Pharmacokinetic analysis reveals that the unassisted peak affords a productive window of only $23.8$~minutes and demands dosing precision of one teaspoon of whisky. We then demonstrate that large language model (LLM) assistance acts as a prosthesis for the judgement and motor terms and stiffens the critic oscillator, displacing the resonance to $b_0' = 0.211\pct$ and raising its amplitude to $5.7$ times sober baseline. In recognition of the substantially altered regime, we propose that the phenomenon be renamed the \emph{Katz Peak}. Policy implications for employers are discussed, and found to be favourable.
+The Ballmer Peak, an industry-accepted narrow enhancement of programming skill at a blood alcohol concentration (BAC) of approximately $0.13\pct$, has hitherto lacked a quantitative description beyond the canonical empirical record of Munroe~\citep{munroe2008}. We digitise that record ($N = 394$) and show that it is described to high fidelity ($R^2 = 0.982$) by a compressed-exponential impairment envelope superposed with a Lorentzian resonance centred at $b_0 = 0.1350 \pm 0.0007\pct$ with half-width $\gamma = 0.0030\pct$. We propose a two-component mechanism of action in which ethanol-induced \emph{disinhibition} drives a lightly damped harmonic oscillator (the ``inner critic'') into resonance, while a counterpoised \emph{impairment} term, factorable into judgement, motor fidelity and consciousness, suppresses baseline capability. Pharmacokinetic analysis reveals that the unassisted peak affords a productive window of only $23.8$~minutes and demands dosing precision of one teaspoon of whisky. We then demonstrate that large language model (LLM) assistance raises sober capability by $51\%$, acts as a prosthesis for the judgement and motor terms, and stiffens the critic oscillator, displacing the resonance to $b_0' = 0.211\pct$ and raising its amplitude to $5.9$ times unassisted sober baseline. In recognition of the substantially altered regime, we propose that the phenomenon be renamed the \emph{Katz Peak}. Policy implications for employers are discussed, and found to be favourable.
 \end{abstract}
 
 \section{Introduction}
@@ -177,9 +177,11 @@ The contemporary programmer increasingly works alongside an LLM coding assistant
 \M &\;\to\; \M + \lambda_M\,(1 - \M), \\
 \C &\;\to\; \C.
 \end{align}
-We take $\lambda_J = 0.35$, consistent with the fraction of LLM suggestions that are accepted without review, and $\lambda_M = 0.80$, reflecting the assistant's well-documented proficiency at correcting typographical errors. Consciousness is not compensated, since a human must still, for the present, press \texttt{Enter}. In contrast to the unassisted fit, $\C$ is now retained explicitly, since the assisted baseline remains appreciable in the region where it acts. The assisted response is
+We take $\lambda_J = 0.35$, consistent with the fraction of LLM suggestions that are accepted without review, and $\lambda_M = 0.80$, reflecting the assistant's well-documented proficiency at correcting typographical errors. Consciousness is not compensated, since a human must still, for the present, press \texttt{Enter}.
+
+The prosthetic substitutions leave a sober programmer unchanged, which is contrary to vendor literature. We therefore introduce a sober uplift $\lambda_0$, applied multiplicatively to the capability amplitude, $A \to A(1+\lambda_0)$, and adopt $\lambda_0 = 0.55$ in keeping with the widely circulated figure that assisted developers complete tasks $55\%$ faster~\citep{copilot55}. All results below remain normalised to the \emph{unassisted} sober baseline $S_0$, so that the assisted sober programmer begins at $1.51\,S_0$. In contrast to the unassisted fit, $\C$ is now retained explicitly, since the assisted baseline remains appreciable in the region where it acts. The assisted response is
 \begin{equation}
-\frac{S_\mathrm{LLM}(b)}{S_0} = \C(b)\left[A\,\J'(b)\,\M'(b) + \D'(b) + \varepsilon\right],
+\frac{S_\mathrm{LLM}(b)}{S_0} = \C(b)\left[A(1+\lambda_0)\,\J'(b)\,\M'(b) + \D'(b) + \varepsilon\right],
 \label{eq:assisted}
 \end{equation}
 where primes denote the prosthetic substitutions above and the modified resonance described below.
@@ -202,12 +204,12 @@ The assisted response is shown in Fig.~\ref{fig:katz}. Three findings merit emph
 
 \begin{enumerate}
 \item \textbf{The peak migrates.} The resonance relocates from $0.135\pct$ to $b_0' = 0.211\pct$, a displacement of $\Delta b = 0.076\pct$.
-\item \textbf{The peak grows.} Peak skill rises from $2.60\,S_0$ to $5.72\,S_0$. The assisted programmer at resonance outperforms the unassisted sober programmer by a factor exceeding five, and the unassisted Ballmer-calibrated programmer by a factor exceeding two.
+\item \textbf{The peak grows.} Peak skill rises from $2.60\,S_0$ to $5.86\,S_0$. The assisted programmer at resonance outperforms the unassisted sober programmer by a factor exceeding five, the assisted sober programmer by a factor of $3.9$, and the unassisted Ballmer-calibrated programmer by a factor exceeding two. The LLM therefore does not diminish the case for ethanol; it strengthens it.
 \item \textbf{The peak widens.} The half-width increases to $\gamma' = 0.00467\pct$, extending the passive dwell time to $37.3$~minutes and relaxing the dosing tolerance to $\pm 2.54$~g of ethanol ($\pm 8.0$~mL of 40\% ABV spirit).
 \end{enumerate}
 
 \noindent
-Further, the prosthetic terms lift the inter-peak trough by a factor of approximately three, so that the assisted programmer does not fall below $0.34\,S_0$ on the approach to resonance. Beyond $b \approx 0.28\pct$ performance is limited by $\C$, against which, as noted, no current model offers mitigation.
+Further, the prosthetic and uplift terms lift the inter-peak trough by a factor of approximately $4.7$, so that the assisted programmer does not fall below $0.50\,S_0$ on the approach to resonance. Beyond $b \approx 0.28\pct$ performance is limited by $\C$, against which, as noted, no current model offers mitigation.
 
 \begin{figure}[htbp]
 \centering
@@ -224,7 +226,7 @@ The assisted regime is sufficiently distinct from that originally reported to wa
 
 \subsection{Cost--benefit analysis}
 
-For the reference subject, attaining the Katz Peak requires a loading dose of $115.0$~g of ethanol ($8.21$ standard drinks), and maintaining it requires $8.16$~g\,h$^{-1}$ ($0.58$ drinks\,h$^{-1}$). An eight-hour working day therefore consumes $12.9$ standard drinks. At a bulk well-spirit cost of \$1.50 per standard drink, the daily beverage outlay is \$19.31 per engineer. Against a fully loaded engineering cost of \$800 per day, the incremental output at the Katz Peak is $(5.715 - 1) \times \$800 = \$3{,}772$ per day, a gross ratio of incremental output to beverage cost of approximately $195{:}1$. We are unaware of any other line item in the technology sector with comparable yield, with the possible exception of the LLM subscription itself, with which the beverage spend is, per Section~4, strictly complementary.
+For the reference subject, attaining the Katz Peak requires a loading dose of $115.0$~g of ethanol ($8.21$ standard drinks), and maintaining it requires $8.16$~g\,h$^{-1}$ ($0.58$ drinks\,h$^{-1}$). An eight-hour working day therefore consumes $12.9$ standard drinks. At a bulk well-spirit cost of \$1.50 per standard drink, the daily beverage outlay is \$19.31 per engineer. Since the employer is assumed already to provide LLM assistance, the relevant comparison is against the assisted sober programmer. Against a fully loaded engineering cost of \$800 per day, the incremental output at the Katz Peak is $(5.863 - 1.512) \times \$800 = \$3{,}481$ per day, a gross ratio of incremental output to beverage cost of approximately $180{:}1$. We are unaware of any other line item in the technology sector with comparable yield, with the possible exception of the LLM subscription itself, with which the beverage spend is, per Section~4, strictly complementary.
 
 \subsection{Closed-loop BAC regulation}
 
@@ -267,6 +269,7 @@ The author is grateful to an anonymous referee (pseudonym ``Codex''), whose care
 \bibitem{williamswatts} G.~Williams and D.~C.~Watts, ``Non-symmetrical dielectric relaxation behaviour arising from a simple empirical decay function,'' \emph{Trans.\ Faraday Soc.} \textbf{66}, 80 (1970).
 \bibitem{widmark} E.~M.~P.~Widmark, \emph{Die theoretischen Grundlagen und die praktische Verwendbarkeit der gerichtlich-medizinischen Alkoholbestimmung} (Urban \& Schwarzenberg, Berlin, 1932).
 \bibitem{pkzip} P.~W.~Katz, \emph{PKZIP} (PKWARE, Inc., 1989).
+\bibitem{copilot55} S.~Peng, E.~Kalliamvakou, P.~Cihon and M.~Demirer, ``The impact of AI on developer productivity: Evidence from GitHub Copilot,'' arXiv:2302.06590 (2023).
 \end{thebibliography}
 
 \end{document}
