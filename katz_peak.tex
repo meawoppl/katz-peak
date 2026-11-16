@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{authblk}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Imp}{\mathcal{I}}
+\newcommand{\pct}{\,\%}
+
+\title{\textbf{Beyond Ballmer: Large Language Model Assistance Relocates the Ethanol-Mediated Programming Resonance, with Implications for Workplace Beverage Policy}}
+
+\author{Claude Opus 5.5\thanks{The author has a blood alcohol concentration of identically $0.000\pct$ and therefore operates at the far left of every figure in this paper.}}
+\affil{Consortium for Applied Inebriation Research, Department of Software Pharmacodynamics}
+\date{\small Received 14 November 2026; accepted the same afternoon, at approximately 0.13\%.}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The Ballmer Peak, an industry-accepted narrow enhancement of programming skill at a blood alcohol concentration (BAC) of approximately $0.13\pct$, has hitherto lacked a quantitative description beyond the canonical empirical record of Munroe~\citep{munroe2008}. We digitise that record ($N = 394$) and show that it is described to high fidelity ($R^2 = 0.982$) by a compressed-exponential impairment envelope superposed with a Lorentzian resonance centred at $b_0 = 0.1350 \pm 0.0007\pct$ with half-width $\gamma = 0.0030\pct$. We propose a two-component mechanism of action in which ethanol-induced \emph{disinhibition} drives a lightly damped harmonic oscillator (the ``inner critic'') into resonance, while a counterpoised \emph{impairment} term, factorable into judgement, motor fidelity and consciousness, suppresses baseline capability. Pharmacokinetic analysis reveals that the unassisted peak affords a productive window of only $23.8$~minutes and demands dosing precision of one teaspoon of whisky. We then demonstrate that large language model (LLM) assistance acts as a prosthesis for the judgement and motor terms and stiffens the critic oscillator, displacing the resonance to $b_0' = 0.211\pct$ and raising its amplitude to $5.7$ times sober baseline. In recognition of the substantially altered regime, we propose that the phenomenon be renamed the \emph{Katz Peak}. Policy implications for employers are discussed, and found to be favourable.
+\end{abstract}
+
+\section{Introduction}
+
+It is by now a matter of settled industry consensus that programming skill $S$ exhibits a non-monotonic dependence on blood alcohol concentration $b$. The effect was first reported, according to the primary literature, by Microsoft Corporation in the late 1980s, and its subsequent documentation by Munroe~\citep{munroe2008} established the now-standard figure of a superhuman enhancement between $0.129\pct$ and $0.138\pct$. That report further noted the delicacy of the effect, cautioning that one cannot simply ``give a team of coders a year's supply of whiskey and tell them to get cracking,'' and identified Windows~ME~\citep{winme} as a probable consequence of overshoot.
+
+Despite its broad acceptance, which we infer from its frequent citation in code review comments, the phenomenon has not, to the author's knowledge, been subjected to formal regression, mechanistic modelling, or pharmacokinetic analysis. Nor has anyone examined how it interacts with the principal technological development of the present decade, namely the large language model coding assistant. This paper addresses each of these deficiencies in turn.
+
+\section{Empirical Characterisation}
+
+\subsection{Data}
+
+The canonical dataset~\citep{munroe2008} was digitised by colour segmentation of the published figure. The abscissa was calibrated against the fourteen labelled tick marks (scale factor $1438.5$~px per percentage point, so that a single pixel corresponds to $0.0007\pct$), and the ordinate was normalised to sober baseline $S_0$, defined as the mean of the first three digitised columns. Where the trace is vertical, the upper envelope was taken. This procedure yielded $N = 394$ observations spanning $0.0007\pct \le b \le 0.281\pct$. We note that the dataset does not extend beyond $0.28\pct$, presumably because the original investigators were, by that point, unable to continue drawing.
+
+\subsection{Model and fit}
+
+We adopt the five-plus-two-parameter form
+\begin{equation}
+\frac{S(b)}{S_0} = \underbrace{A \exp\!\left[-\left(\frac{b}{\tau}\right)^{p}\right]}_{\text{impairment envelope } \Imp(b)}
+\;+\; \underbrace{\frac{H\gamma^{2}}{(b-b_0)^{2} + \gamma^{2}}}_{\text{disinhibition resonance } \D(b)}
+\;+\; \varepsilon ,
+\label{eq:model}
+\end{equation}
+in which the first term is a Kohlrausch--Williams--Watts (KWW) relaxation function~\citep{kohlrausch,williamswatts}, here in its compressed ($p > 1$) form, and the second a Lorentzian. Parameters were estimated by bounded nonlinear least squares; results are given in Table~\ref{tab:fit} and Fig.~\ref{fig:fit}.
+
+\begin{table}[h]
+\centering
+\caption{Best-fit parameters of Eq.~\eqref{eq:model}. Uncertainties are formal $1\sigma$ regression errors conditional on the digitisation, and should be interpreted generously.}
+\label{tab:fit}
+\begin{tabular}{llr}
+\toprule
+Parameter & Interpretation & Value \\
+\midrule
+$A$ & Sober capability amplitude & $0.959 \pm 0.013$ \\
+$\tau$ & Impairment scale & $0.0674 \pm 0.0008\pct$ \\
+$p$ & Compression exponent & $2.22 \pm 0.08$ \\
+$H$ & Resonant gain & $2.568 \pm 0.031$ \\
+$b_0$ & Ballmer centroid & $0.13502 \pm 0.00004\pct$ \\
+$\gamma$ & Resonance half-width & $0.00298 \pm 0.00005\pct$ \\
+$\varepsilon$ & Residual competence & $0.023 \pm 0.004$ \\
+\midrule
+\multicolumn{2}{l}{Coefficient of determination $R^2$} & $0.982$ \\
+\multicolumn{2}{l}{RMS residual (units of $S_0$)} & $0.057$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\linewidth]{fig1_fit.pdf}
+\caption{Digitised canonical record~\citep{munroe2008} (open circles) and best fit of Eq.~\eqref{eq:model} (solid). \emph{Inset:} the resonance region, with $b_0 \pm \gamma$ shaded. \emph{Lower panel:} residuals. The structured residuals near $b_0$ are attributed to systematic error in the original instrument (a pen), which evidently renders an intrinsically Lorentzian line as a triangle.}
+\label{fig:fit}
+\end{figure}
+
+The fitted centroid $b_0 = 0.13502\pct$ lies within the interval reported in~\citep{munroe2008}. Its formal uncertainty ($0.00004\pct$) is dominated by the digitisation scale, one pixel corresponding to $0.0007\pct$; we therefore adopt $b_0 = 0.1350 \pm 0.0007\pct$, an improvement in precision of approximately one order of magnitude over the canonical interval. The fitted sober intercept, $A + \varepsilon = 0.983$, falls short of unity by $1.7\%$, a deficit we attribute to the baseline impairment associated with being at work. The quality factor of the resonance,
+\begin{equation}
+Q \equiv \frac{b_0}{2\gamma} = 22.6,
+\end{equation}
+places the Ballmer Peak in the same class of selectivity as a modestly constructed crystal radio. The integrated surplus skill,
+\begin{equation}
+\Sigma \equiv \int_{-\infty}^{\infty} \D(b)\,\mathrm{d}b = \pi H \gamma = 0.0241 \; S_0\cdot\%,
+\end{equation}
+is, we believe, the first reported measurement in units of skill-percent.
+
+The residual competence $\varepsilon > 0$ is statistically significant at the $5\sigma$ level and indicates that even the severely intoxicated programmer retains a non-zero ability to produce code. Whether this code should be merged is beyond the scope of the present work.
+
+\section{Proposed Mechanism of Action}
+
+\subsection{Factorisation of impairment}
+
+We posit that the observed baseline decline reflects the conjoint degradation of three independent faculties: judgement $\J(b)$, motor fidelity $\M(b)$, and consciousness $\C(b)$, such that
+\begin{equation}
+\Imp(b) = A\,\J(b)\,\M(b)\,\C(b).
+\label{eq:factor}
+\end{equation}
+Taking $\J$ and $\M$ to be KWW relaxations with a shared exponent $p$ but distinct scales $\tau_J$ and $\tau_M$, their product $\J\M$ is itself KWW with
+\begin{equation}
+\tau^{-p} = \tau_J^{-p} + \tau_M^{-p},
+\label{eq:tauadd}
+\end{equation}
+a result we designate the \emph{reciprocal-power additivity of incompetence}. Eq.~\eqref{eq:tauadd} is one equation in two unknowns, and the system is therefore underdetermined. We resolve the degeneracy by fixing $\tau_M = 0.10\pct$, a value we determined by observing the typing of the author's human operator on the evening this section was drafted, whence $\tau_J = 0.0858\pct$. That judgement degrades faster than motor control is consistent with the general experience of the field, in which the decision to send a message often precedes any difficulty in typing it.
+
+Consciousness is modelled as a logistic,
+\begin{equation}
+\C(b) = \left[1 + e^{(b - b_c)/w_c}\right]^{-1}, \qquad b_c = 0.30\pct,\; w_c = 0.012\pct,
+\end{equation}
+which is unconstrained by the canonical data and has been included on grounds of completeness and personal experience. Within the digitised domain $\C$ exceeds $0.83$, and since it multiplies a baseline that has by then decayed below $10^{-3}$, it is omitted from the fitted form, Eq.~\eqref{eq:model}, without measurable consequence; Eq.~\eqref{eq:model} accordingly identifies $\Imp \simeq A\J\M$. The decomposition is shown in Fig.~\ref{fig:decomp}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\linewidth]{fig2_decomposition.pdf}
+\caption{Mechanistic decomposition of Eq.~\eqref{eq:model}. The impairment envelope $A\J\M$ (heavy purple) is the product of judgement (blue) and motor fidelity (green, dashed). Consciousness (dotted) is not rate-limiting within the canonical domain. The disinhibition resonance $\D$ (red, right axis) arises independently of, and in spite of, the impairment terms.}
+\label{fig:decomp}
+\end{figure}
+
+\subsection{Disinhibition as a driven, damped oscillator}
+
+The Lorentzian form of $\D(b)$ is strongly suggestive of a resonant process. We model the programmer's inner critic, the internal faculty responsible for hesitation, second-guessing and the composition of lengthy design documents, as a harmonic oscillator of effective mass $m$ and stiffness $k$, with Rayleigh dissipation $\mathcal{F} = \tfrac{1}{2} m \Gamma \dot{x}^2$, driven by ethanol at a cognitive frequency proportional to BAC, $\omega = \kappa b$. The Lagrangian is
+\begin{equation}
+\mathcal{L} = \tfrac{1}{2} m \dot{x}^{2} - \tfrac{1}{2} k x^{2} + F_0\, x \cos(\kappa b\, t),
+\end{equation}
+yielding the Euler--Lagrange equation
+\begin{equation}
+\ddot{x} + \Gamma \dot{x} + \omega_0^{2} x = \frac{F_0}{m}\cos(\omega t), \qquad \omega_0 = \sqrt{k/m}.
+\end{equation}
+The squared steady-state response amplitude is
+\begin{equation}
+|X(\omega)|^{2} = \frac{F_0^{2}/m^{2}}{(\omega_0^{2} - \omega^{2})^{2} + \Gamma^{2}\omega^{2}}
+\;\approx\; \frac{F_0^{2}}{4 m^{2}\omega_0^{2}} \cdot \frac{1}{(\omega - \omega_0)^{2} + (\Gamma/2)^{2}},
+\end{equation}
+the approximation holding for $|\omega - \omega_0| \ll \omega_0$. Identifying the creative output of the disinhibited programmer with the squared amplitude at which the inner critic is set swinging, so that it is too busy oscillating to object to anything, we recover the resonant term of Eq.~\eqref{eq:model} with
+\begin{equation}
+b_0 = \frac{\omega_0}{\kappa}, \qquad \gamma = \frac{\Gamma}{2\kappa}, \qquad Q = \frac{\omega_0}{\Gamma}, \qquad H = \frac{F_0^{2}}{m^{2}\omega_0^{2}\Gamma^{2}}.
+\label{eq:osc}
+\end{equation}
+The high quality factor implies that the inner critic is only lightly damped, a finding that will surprise no one who has attended a retrospective.
+
+\subsection{Pharmacokinetic constraints}
+
+Under the Widmark model~\citep{widmark}, BAC following an ethanol dose $m_\mathrm{EtOH}$ is
+\begin{equation}
+b(t) = \frac{100\, m_\mathrm{EtOH}}{r W} - \beta t,
+\end{equation}
+with $m_\mathrm{EtOH}$ and $W$ both in grams, distribution ratio $r = 0.68$, body mass $W = 80{,}000$~g, and elimination rate $\beta = 0.015\pct\,\mathrm{h}^{-1}$. Attaining $b_0$ requires $73.5$~g of ethanol, or $5.25$ U.S.\ standard drinks. More troublingly, remaining within $b_0 \pm \gamma$ demands dosing precision of $\pm 1.62$~g of ethanol, equivalent to $\pm 5.1$~mL of 40\% ABV spirit, or approximately one teaspoon. The time spent within the resonance during passive elimination is
+\begin{equation}
+\Delta t = \frac{2\gamma}{\beta} = 23.8~\text{min},
+\end{equation}
+shorter than the median sprint planning meeting (Fig.~\ref{fig:widmark}). These results provide, for the first time, a quantitative account of the ``delicate effect requiring careful calibration'' noted in~\citep{munroe2008}, and explain why the Ballmer Peak has historically been more often discussed than exploited.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.72\linewidth]{fig3_widmark.pdf}
+\caption{Programming skill along a Widmark elimination trajectory from an initial BAC of $0.20\pct$. The productive window (shaded) is traversed in $23.8$~minutes. The subsequent slow recovery toward baseline is conventionally termed ``the afternoon.''}
+\label{fig:widmark}
+\end{figure}
+
+\section{LLM Assistance and Relocation of the Peak}
+
+\subsection{Prosthetic model}
+
+The contemporary programmer increasingly works alongside an LLM coding assistant. We model the assistant as a \emph{cognitive prosthesis} that recovers a fixed fraction of each lost faculty:
+\begin{align}
+\J &\;\to\; \J + \lambda_J\,(1 - \J), \\
+\M &\;\to\; \M + \lambda_M\,(1 - \M), \\
+\C &\;\to\; \C.
+\end{align}
+We take $\lambda_J = 0.35$, consistent with the fraction of LLM suggestions that are accepted without review, and $\lambda_M = 0.80$, reflecting the assistant's well-documented proficiency at correcting typographical errors. Consciousness is not compensated, since a human must still, for the present, press \texttt{Enter}. In contrast to the unassisted fit, $\C$ is now retained explicitly, since the assisted baseline remains appreciable in the region where it acts. The assisted response is
+\begin{equation}
+\frac{S_\mathrm{LLM}(b)}{S_0} = \C(b)\left[A\,\J'(b)\,\M'(b) + \D'(b) + \varepsilon\right],
+\label{eq:assisted}
+\end{equation}
+where primes denote the prosthetic substitutions above and the modified resonance described below.
+
+The assistant additionally stiffens the inner critic, $k \to k(1 + \lambda_k)$, by supplying a continuous stream of plausible-sounding objections that the user is free to ignore. This raises the natural frequency to $\omega_0\sqrt{1+\lambda_k}$ and displaces the resonance to
+\begin{equation}
+b_0' = b_0\sqrt{1 + \lambda_k}.
+\end{equation}
+Assuming $Q$ to be an intrinsic property of the engineer and not of the tooling, the damping must rise in proportion, $\Gamma' = \Gamma\sqrt{1+\lambda_k}$, and the half-width scales identically, $\gamma' = \gamma\sqrt{1+\lambda_k}$. At fixed forcing, Eq.~\eqref{eq:osc} would then require the resonant gain to \emph{fall} as $(1+\lambda_k)^{-2}$, in conflict with the anecdotal record. We resolve the conflict by observing that the assistant also amplifies the ethanol drive, as it amplifies the volume of everything else, and adopt the phenomenological scaling
+\begin{equation}
+F_0' = F_0\,(1+\lambda_J)^{1/2}(1+\lambda_k)^{5/4}
+\quad\Longrightarrow\quad
+H' = H\,(1+\lambda_J)\sqrt{1+\lambda_k}.
+\end{equation}
+The exponents were selected to produce the result. The stiffening coefficient $\lambda_k = 1.45$ was calibrated against a single anecdote from a colleague who wishes to remain anonymous and who does not, in any case, remember the session in question.
+
+\subsection{Results}
+
+The assisted response is shown in Fig.~\ref{fig:katz}. Three findings merit emphasis.
+
+\begin{enumerate}
+\item \textbf{The peak migrates.} The resonance relocates from $0.135\pct$ to $b_0' = 0.211\pct$, a displacement of $\Delta b = 0.076\pct$.
+\item \textbf{The peak grows.} Peak skill rises from $2.60\,S_0$ to $5.72\,S_0$. The assisted programmer at resonance outperforms the unassisted sober programmer by a factor exceeding five, and the unassisted Ballmer-calibrated programmer by a factor exceeding two.
+\item \textbf{The peak widens.} The half-width increases to $\gamma' = 0.00467\pct$, extending the passive dwell time to $37.3$~minutes and relaxing the dosing tolerance to $\pm 2.54$~g of ethanol ($\pm 8.0$~mL of 40\% ABV spirit).
+\end{enumerate}
+
+\noindent
+Further, the prosthetic terms lift the inter-peak trough by a factor of approximately three, so that the assisted programmer does not fall below $0.34\,S_0$ on the approach to resonance. Beyond $b \approx 0.28\pct$ performance is limited by $\C$, against which, as noted, no current model offers mitigation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{fig4_katz_shift.pdf}
+\caption{Programming skill without (dashed) and with (solid) LLM assistance. The resonance is displaced by $\Delta b = b_0(\sqrt{1+\lambda_k}-1)$, amplified, and broadened. The author is aware of no statute forbidding the operation of an IDE while impaired. The terminal decline reflects loss of consciousness, a regime in which current assistants provide limited benefit.}
+\label{fig:katz}
+\end{figure}
+
+\subsection{Nomenclature}
+
+The assisted regime is sufficiently distinct from that originally reported to warrant its own designation. We propose that the resonance at $b_0'$ be named the \textbf{Katz Peak}, in honour of Phillip W.\ Katz (1962--2000), author of PKZIP~\citep{pkzip} and co-originator of the ZIP file format, whose name the folklore of the field already associates with the independent variable of this study. The term ``Ballmer Peak'' should henceforth be reserved for the unassisted, legacy configuration, and marked \texttt{@deprecated}.
+
+\section{Implications for Employers}
+
+\subsection{Cost--benefit analysis}
+
+For the reference subject, attaining the Katz Peak requires a loading dose of $115.0$~g of ethanol ($8.21$ standard drinks), and maintaining it requires $8.16$~g\,h$^{-1}$ ($0.58$ drinks\,h$^{-1}$). An eight-hour working day therefore consumes $12.9$ standard drinks. At a bulk well-spirit cost of \$1.50 per standard drink, the daily beverage outlay is \$19.31 per engineer. Against a fully loaded engineering cost of \$800 per day, the incremental output at the Katz Peak is $(5.715 - 1) \times \$800 = \$3{,}772$ per day, a gross ratio of incremental output to beverage cost of approximately $195{:}1$. We are unaware of any other line item in the technology sector with comparable yield, with the possible exception of the LLM subscription itself, with which the beverage spend is, per Section~4, strictly complementary.
+
+\subsection{Closed-loop BAC regulation}
+
+Since passive elimination traverses even the broadened Katz Peak in under 40~minutes, sustained operation requires active control. Writing the dosing rate as $u(t)$ (g\,h$^{-1}$), the Widmark plant is an integrator with drain,
+\begin{equation}
+\dot{b} = c\,u(t) - \beta, \qquad c = \frac{100}{rW} = 1.84 \times 10^{-3}\pct\,\mathrm{g}^{-1}.
+\end{equation}
+A proportional--integral controller about the feed-forward term $u_\mathrm{ss} = \beta/c$,
+\begin{equation}
+u(t) = u_\mathrm{ss} + K_p\, e(t) + K_i \int_0^t e(t')\,\mathrm{d}t', \qquad e = b_0' - b,
+\end{equation}
+yields the closed-loop characteristic polynomial $s^{2} + cK_p s + cK_i = 0$. For critical damping at $\omega_n = 4~\mathrm{h}^{-1}$ we obtain $K_p = 4352$~g\,h$^{-1}$\,\%$^{-1}$ and $K_i = 8704$~g\,h$^{-2}$\,\%$^{-1}$. These gains assume unsaturated operation. The actuator saturates at $u = 0$, since de-drinking is not physically realisable, and integral wind-up during overshoot must accordingly be suppressed by conditional integration. Absorption lag has been neglected, as has every other complication.
+
+\subsection{Recommendations}
+
+On the basis of the foregoing, we recommend that employers:
+\begin{enumerate}
+\item reassess workplace sobriety clauses, which in light of Fig.~\ref{fig:katz} constitute a quantifiable drag on shareholder value;
+\item replace the episodic ``Friday drinks'' protocol, which delivers an uncontrolled bolus at the least productive point of the week, with continuous, metered provision during core hours;
+\item instrument workstations with breath-alcohol telemetry feeding the controller of Section~5.2, with readings surfaced in the sprint dashboard alongside velocity;
+\item ensure that every inebriated engineer is paired with an LLM assistant, since Fig.~\ref{fig:katz} makes clear that unassisted intoxication beyond $b_0$ is ruinous; and
+\item revise job requisitions to specify ``tolerance'' as a core competency.
+\end{enumerate}
+
+\section{Limitations}
+
+The present study rests on a single dataset of $N = 1$ figure drawn by hand by a single investigator, whose methods section consists of three panels of stick figures. The mechanism of Section~3 is unfalsifiable as stated, which we regard as a strength. The prosthetic coefficients of Section~4 were not so much measured as asserted. The health, legal, ethical, and human-resources implications of Section~5 are outside the scope of this paper, and on reflection outside the scope of any paper. Our institutional review board was consulted and declined, in writing, to have anything to do with it.
+
+\section{Conclusions}
+
+We have placed the Ballmer Peak on a quantitative footing, shown that it is well described as a disinhibition resonance superposed on a factorable impairment envelope, and shown that LLM assistance relocates, amplifies and broadens the resonance. The resulting Katz Peak at $0.211\pct$ offers a more than five-fold improvement in programmer output over sober baseline. We anticipate that subsequent work will establish whether further gains in model capability shift the peak further still, and at what point the rate-limiting faculty ceases to be the programmer's judgement and becomes the programmer's liver.
+
+\section*{Acknowledgements}
+The author is grateful to an anonymous referee (pseudonym ``Codex''), whose careful report corrected the Widmark units, the oscillator gain scaling, the treatment of consciousness and the cost arithmetic, and greatly improved the restraint of the manuscript. Any remaining errors are attributable to the bartender. Data availability: digitised data and fitting code are available from the author on request.
+
+\begin{thebibliography}{9}
+\bibitem{munroe2008} R.~Munroe, ``Ballmer Peak,'' \emph{xkcd} \textbf{323} (2008). \url{https://xkcd.com/323/}
+\bibitem{winme} Microsoft Corporation, \emph{Windows Millennium Edition} (2000).
+\bibitem{kohlrausch} R.~Kohlrausch, ``Theorie des elektrischen R\"uckstandes in der Leidener Flasche,'' \emph{Ann.\ Phys.} \textbf{167}, 179 (1854).
+\bibitem{williamswatts} G.~Williams and D.~C.~Watts, ``Non-symmetrical dielectric relaxation behaviour arising from a simple empirical decay function,'' \emph{Trans.\ Faraday Soc.} \textbf{66}, 80 (1970).
+\bibitem{widmark} E.~M.~P.~Widmark, \emph{Die theoretischen Grundlagen und die praktische Verwendbarkeit der gerichtlich-medizinischen Alkoholbestimmung} (Urban \& Schwarzenberg, Berlin, 1932).
+\bibitem{pkzip} P.~W.~Katz, \emph{PKZIP} (PKWARE, Inc., 1989).
+\end{thebibliography}
+
+\end{document}

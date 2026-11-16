@@ -1,0 +1,49 @@
+name: Build paper
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended lmodern
+
+      - name: Digitise, fit, and render figures
+        run: |
+          python digitize_fit.py
+          python figures.py | tee numbers.txt
+
+      - name: Build PDF
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error katz_peak.tex
+          pdflatex -interaction=nonstopmode -halt-on-error katz_peak.tex
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: katz-peak
+          path: |
+            katz_peak.pdf
+            numbers.txt
+            fig*.pdf
